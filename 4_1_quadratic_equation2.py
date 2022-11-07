@@ -3,7 +3,7 @@ print('\nРівняння має вигляд: a•x²+b•x+c=0\n')
 
 def input_data():
     arg = []
-    arg += [float(_) for _ in input('Вкажіть послідовно значення аргументів a,b,c через пробіл:\n').split()]
+    arg += [float(_) for _ in input('Вкажіть послідовно значення аргументів a,b,c через пробіл:').split()]
     return arg
 
 
