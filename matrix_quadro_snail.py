@@ -1,6 +1,8 @@
 n = int(input('Вкажіть розмір матриці: '))
+
 matrix = [[0 for i in range(n)] for j in range(n)]
 i, j = 0, 0
+
 for snail_number in range(1, n ** 2 + 1):
     matrix[i][j] = snail_number
     if snail_number == n ** 2:
