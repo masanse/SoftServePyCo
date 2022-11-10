@@ -18,21 +18,14 @@ def input_matrix_size() -> tuple:
 
 
 def matrix_creating_karkas(xy: tuple) -> list:
-    matrix = [[0 for i in range(xy[0])] for j in range(xy[1])]
-    return matrix
-
-
-def matrix_filling(matrix: list) -> list:
-    for i in range(len(matrix)):
-        for j in range(len(matrix[i])):
-            matrix[i][j] = randint(1, len(matrix) * len(matrix[0]) * 10)
+    matrix = [[(randint(1, xy[0] * xy[1] * 10)) for i in range(xy[0])] for j in range(xy[1])]
     return matrix
 
 
 def matrix_showing(matrix: list) -> None:
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
-            print(f'{matrix[i][j]:8d}', end=' ')
+            print(f'{matrix[i][j]:4d}', end=' ')
         print('')
     print('')
 
@@ -65,22 +58,19 @@ def matrix_replace(matrix: list, t: tuple) -> list:
     return matrix
 
 
-def saving_in_file(t:tuple):
+def saving_in_file(t: tuple):
     outfile = open('result.txt', 'w')
     outfile.write(f'minimum = {t[0]}\nmaximum = {t[2]}\n')
     outfile.close()
 
 
+if __name__ == '__main__':
+    matrix = matrix_creating_karkas(input_matrix_size())
+    matrix_showing(matrix)
 
-karkas = matrix_creating_karkas(input_matrix_size())
-matrix_showing(karkas)
+    result = searching_minmax(matrix)
 
-matrix = matrix_filling(karkas)
-matrix_showing(matrix)
+    matrix_r = matrix_replace(matrix, result)
+    matrix_showing(matrix_r)
 
-result = searching_minmax(matrix)
-
-matrix_r = matrix_replace(matrix, result)
-matrix_showing(matrix_r)
-
-saving_in_file(result)
+    saving_in_file(result)
