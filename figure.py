@@ -30,7 +30,7 @@ class Figure:
         self.__side2 = param
 
     def __str__(self):
-        return (f'Значення параметрів на зараз:\nangle1 = {self.__angle1}\nangle2 = {self.__angle2}\n'
+        return (f'Значення параметрів Figure на зараз:\nangle1 = {self.__angle1}\nangle2 = {self.__angle2}\n'
                 f'side1 = {self.__side1}\nside2 = {self.__side2}')
 
 
