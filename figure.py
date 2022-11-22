@@ -1,10 +1,15 @@
 class Figure:
+    __count = 0
+
     def __init__(self):
+        Figure.__count += 1
         self.__angle1 = 0
         self.__angle2 = 0
         self.__side1 = 0
         self.__side2 = 0
 
+    def __del__(self):
+        Figure.__count -= 1
     def getting_angle1(self):
         return self.__angle1
 
@@ -16,6 +21,9 @@ class Figure:
 
     def getting_side2(self):
         return self.__side2
+
+    def counting(self):
+        return Figure.__count
 
     def setting_angle1(self, param):
         self.__angle1 = param
@@ -30,19 +38,24 @@ class Figure:
         self.__side2 = param
 
     def __str__(self):
-        return (f'Значення параметрів Figure на зараз:\nangle1 = {self.__angle1}\nangle2 = {self.__angle2}\n'
-                f'side1 = {self.__side1}\nside2 = {self.__side2}')
+        return 'Метод неперевизначен'
 
 
-def main():
-    a = Figure()
-    print(a)
-
-    a.setting_side2(10)
-    print(a)
-
-    print(a.getting_angle1())
-
-
+# def main():
+#     a = Figure()
+#     b = Figure()
+#
+#     # print(a)
+#
+#     a.setting_side2(10)
+#     # print(a)
+#
+#     # print(a.getting_angle1())
+#
+#
 if __name__ == '__main__':
-    main()
+#     main()
+    c = Figure()
+    d = Figure()
+
+    print(Figure.counting(Figure))

@@ -1,9 +1,9 @@
 from math import pi
 import tkinter
-import figure
+from figure import Figure
 
 
-class Circle(figure.Figure):
+class Circle(Figure):
     def __init__(self):
         super().__init__()
         self.__radius = 0
@@ -34,7 +34,7 @@ class Circle(figure.Figure):
     def drawing_circle(self):
         Circle.searching_radius(self)
         root = tkinter.Tk()
-        canv = tkinter.Canvas(root, width=1024, height=800, bg='black')
+        canv = tkinter.Canvas(root, width=1920, height=1080, bg='black')
 
         def drawing_by_click(event):
             x = event.x
@@ -46,23 +46,32 @@ class Circle(figure.Figure):
         canv.pack()
         root.mainloop()
 
+    def __str__(self):
+        return (f'Значення параметрів Circle на зараз:\n'
+                f'angle1 = {Circle.getting_angle1(self)}\n'
+                f'angle2 = {Circle.getting_angle2(self)}\n'
+                f'side1 = {Circle.getting_side1(self)}\n'
+                f'side2 = {Circle.getting_side2(self)}\n'
+                f'radius = {Circle.searching_radius(self)}')
+
 
 def main():
     a = Circle()
+    b = Circle()
+    c = Circle()
+    c.setting_side1(1500)
+    print(c)
+    del (b)
 
-    a.setting_side1(500)
+    a.setting_side1(1000)
 
     a.searching_area()
     print('Площа кола: ', a.getting_area())
     print('Радіус: ', a.getting_radius())
 
-    # a._Figure__side1 = 5
-    # print(a)
+    print(f'Кількість екземплярів {Circle.counting(Figure)}')
 
-    a.drawing_circle()
-
-    # for i in dir(a):
-    #     print(i)
+    c.drawing_circle()
 
 
 if __name__ == '__main__':
